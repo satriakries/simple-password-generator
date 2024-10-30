@@ -17,6 +17,13 @@
             <label for="url">URL (optional):</label>
             <input type="text" id="url">
         </div>
+        <div class="input-group">
+            <label>Include Characters:</label>
+            <input type="checkbox" id="include-lowercase" checked> Lowercase
+            <input type="checkbox" id="include-uppercase" checked> Uppercase
+            <input type="checkbox" id="include-numbers" checked> Numbers
+            <input type="checkbox" id="include-symbols" checked> Symbols
+        </div>
         <button id="generate">Generate Password</button>
         <div id="password-container">
             <input type="text" id="password" readonly>
