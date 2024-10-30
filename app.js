@@ -1,5 +1,5 @@
 import { generatePassword } from "./passwordGenerator.js";
-import { savePassword } from "./storage.js";
+import { getLastPassword, savePassword } from "./storage.js";
 
 const generateBtn = document.getElementById('generate');
 const copyBtn = document.getElementById('copy');
@@ -13,4 +13,22 @@ generateBtn.addEventListener('click', () => {
     const password = generatePassword(length);
     passwordEl.value = password;
     savePassword(password, url);
+})
+
+copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(passwordEl.value)
+        .then( () => {
+            alert('Password copied to clipboard');            
+        })
+        .catch(err => {
+            console.error('Failed to copy text', err);
+        });
+})
+
+window.addEventListener('load', () => {
+    const lastPassword = getLastPassword();
+    if (lastPassword) {
+        passwordEl.value = lastPassword.password;
+        urlEl.value = lastPassword.url || '';
+    }
 })
