@@ -6,11 +6,16 @@ const copyBtn = document.getElementById('copy');
 const passwordEl = document.getElementById('password');
 const lengthEl = document.getElementById('length');
 const urlEl = document.getElementById('url');
+const includeLowercase = document.getElementById('include-lowercase').checked;
+const includeUppercase = document.getElementById('include-uppercase').checked;
+const includeNumbers = document.getElementById('include-numbers').checked;
+const includeSymbols = document.getElementById('include-symbols').checked;
+
 
 generateBtn.addEventListener('click', () => {
     const length = parseInt(lengthEl.value);
     const url = urlEl.value;
-    const password = generatePassword(length);
+    const password = generatePassword(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols);
     passwordEl.value = password;
     savePassword(password, url);
 })
